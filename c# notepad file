@@ -1,0 +1,53 @@
+using System.IO;
+using System.Linq.Expressions;
+using System.Windows.Forms;
+
+namespace Notepad__
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private string file = "";
+
+        private void newbutton_Click(object sender, EventArgs e)
+        {
+        //get rich textbox
+            richTextBox1.Clear();
+        }
+
+        private void exitbutton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void savebutton_Click(object sender, EventArgs e)
+        {
+        //get savefiledialog
+            DialogResult dr = saveFileDialog1.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                StreamWriter write = new StreamWriter(saveFileDialog1.FileName);
+                write.Write(richTextBox1.Text);
+                write.Close();
+            }
+            else
+            {
+                try
+                {
+                    StreamWriter write = new StreamWriter(saveFileDialog1.FileName);
+                    write.Write(richTextBox1.Text);
+                    write.Close();
+                }
+
+
+                catch
+                {
+
+                }
+
+            }
+        }
